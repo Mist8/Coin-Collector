@@ -34,14 +34,15 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene
         }
+
     }
 
     private void FixedUpdate()
     {
-        rb.AddForce(xInput * moveSpeed, 0, yInput * moveSpeed); //apply force to the rigidbody based on input
+        /*rb.AddForce(xInput * moveSpeed, 0, yInput * moveSpeed); //apply force to the rigidbody based on input
 
-        /*float horizontalInput = Input.GetAxis("Horizontal"); //left/right arrow keys or A/D keys
-        float verticalInput = Input.GetAxis("Vertical"); //up/down arrow keys or W/S keys (i think its front/back)
+        float horizontalInput = Input.GetAxis("Horizontal"); //left/right arrow keys or A/D keys
+        float verticalInput = Input.GetAxis("Vertical"); //up/down arrow keys or W/S keys (i think its front/back)*/
 
         // Get camera's forward and right vectors (without y)
         Vector3 forward = mainCamera.transform.forward;
@@ -53,15 +54,16 @@ public class PlayerController : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-
         // Calculate movement direction
-        Vector3 moveDirection = (forward * verticalInput + right * horizontalInput).normalized;
+        Vector3 moveDirection = forward * yInput + right * xInput;
+
+        rb.AddForce(moveDirection * moveSpeed);
 
         // Move the character
         if (moveDirection != Vector3.zero)
         {
             rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
-        }*/
+        }
     }
 
     private void OnTriggerEnter(Collider other)
