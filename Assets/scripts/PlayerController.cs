@@ -60,10 +60,10 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(moveDirection * moveSpeed);
 
         // Move the character
-        if (moveDirection != Vector3.zero)
+        /*if (moveDirection != Vector3.zero)
         {
             rb.MovePosition(transform.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
