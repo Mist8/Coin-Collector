@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene if player hits a spike
         }
 
-        if (coinsCollected >= 7) //win game
+        if (coinsCollected >= 18) //win game
         {
             winText.SetActive(true); //activate the win text
             //Time.timeScale = 0; //pause the game
