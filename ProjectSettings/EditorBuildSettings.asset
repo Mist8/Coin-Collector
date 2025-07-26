@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ball level 1.unity
+    guid: ae177a74db16b43afa4a6b7815a0abd0
+  - enabled: 1
+    path: Assets/ball coin collector scene.unity
+    guid: 7d27030b6dd46466fa1921adee480ba1
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
