@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
     int coinsCollected;
     bool finishedLevel;
+    //[SerializeField] private AudioClip coinSound; // sound to play when collecting a coin
+    public AudioClip coinSound; // sound to play when collecting a coin
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         finishedLevel = false;
         coinsCollected = 0;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Coin")
         {
             coinsCollected++;
+            SoundFXManager.instance.PlaySoundFXClip(coinSound, transform, 1f); //play coin sound effect
             other.gameObject.SetActive(false); //deactivate the coin object
         }
 
@@ -88,7 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         finishedLevel = true;
         winText.SetActive(true);
-        yield return new WaitForSeconds(3f); // wait for text to show
+        yield return new WaitForSeconds(4f); // wait for text to show
         SceneManager.LoadScene(sceneIndex);
         finishedLevel = false;
     }
