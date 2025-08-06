@@ -83,15 +83,19 @@ public class PlayerController : MonoBehaviour
             
         }
 
-        if (coinsCollected >= 18 && SceneManager.GetActiveScene().buildIndex == 1) //win level 2
+        if (coinsCollected >= 8 && SceneManager.GetActiveScene().buildIndex == 1) //win level 2
         {
-            StartCoroutine(LoadLevel(1));
+            StartCoroutine(LoadLevel(2));
 
         }
-        if (coinsCollected >= 4 && SceneManager.GetActiveScene().buildIndex == 0) //win level 1
+        if (coinsCollected >= 18 && SceneManager.GetActiveScene().buildIndex == 2) //win level 3
         {
-            StartCoroutine(LoadLevel(1));
+            StartCoroutine(LoadLevel(2));
         }
+        if (coinsCollected >= 4 && SceneManager.GetActiveScene().buildIndex == 0) //win level 1
+            {
+                StartCoroutine(LoadLevel(1));
+            }
 
     }
     IEnumerator LoadLevel(int sceneIndex)
