@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour
     int coinsCollected;
     bool finishedLevel;
     //[SerializeField] private AudioClip coinSound; // sound to play when collecting a coin
-    public AudioClip coinSound; // sound to play when collecting a coin
+    public AudioClip coinSound;
+    public AudioClip spikeSound;
+    public AudioClip winSound;
     private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -75,7 +77,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Spike")
         {
+            SoundFXManager.instance.PlaySoundFXClip(spikeSound, transform, 1f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene if player hits a spike
+    
+            
         }
 
         if (coinsCollected >= 18 && SceneManager.GetActiveScene().buildIndex == 1) //win level 2
@@ -92,6 +97,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator LoadLevel(int sceneIndex)
     {
         finishedLevel = true;
+        SoundFXManager.instance.PlaySoundFXClip(winSound, transform, 1f);
         winText.SetActive(true);
         yield return new WaitForSeconds(4f); // wait for text to show
         SceneManager.LoadScene(sceneIndex);

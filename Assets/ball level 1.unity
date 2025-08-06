@@ -1202,7 +1202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   winText: {fileID: 2017044563}
-  coinSound: {fileID: 8300000, guid: d6338a30c64514376b7b1bc1a1135dbd, type: 3}
+  coinSound: {fileID: 8300000, guid: 5e1dac3c9ec5e4b34823c127fb4bc0a2, type: 3}
+  spikeSound: {fileID: 0}
+  winSound: {fileID: 8300000, guid: 687c1c5fe76de48b18b038b90fd58ea4, type: 3}
 --- !u!4 &1489746547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4935240531098310, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
