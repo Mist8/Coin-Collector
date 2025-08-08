@@ -7,6 +7,7 @@ public class SoundFXManager : MonoBehaviour
     public AudioSource soundFXObject; // Prefab for the audio source
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -17,6 +18,7 @@ public class SoundFXManager : MonoBehaviour
             //Destroy(gameObject); // Ensure only one instance exists
         }
     }
+
     public void PlaySoundFXClip(AudioClip audioclip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
