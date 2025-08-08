@@ -19,7 +19,7 @@ public class SoundMixerManager : MonoBehaviour
 
     void Awake() //not sure
     {
-            DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void SetMasterVolume(float volume)

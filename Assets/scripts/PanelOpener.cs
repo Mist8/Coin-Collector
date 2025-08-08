@@ -10,6 +10,7 @@ public class PanelOpener : MonoBehaviour
         if (panelOrCanvas != null) //hide panel/canvas on game start
         {
             panelOrCanvas.SetActive(false);
+            //DontDestroyOnLoad(panelOrCanvas);
         }
     }
 
@@ -18,9 +19,14 @@ public class PanelOpener : MonoBehaviour
     {
 
     }
+    
+    /*void Awake() 
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }*/
 
     //targetCanvasOrPanel.activeSelf: active status
-    
+
     public void ToggleVisibility()
     {
         if (panelOrCanvas != null)

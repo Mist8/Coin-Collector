@@ -15,7 +15,7 @@ public class SoundFXManager : MonoBehaviour
         }
         else
         {
-            //Destroy(gameObject); // Ensure only one instance exists
+            Destroy(gameObject); // Ensure only one instance exists
         }
     }
 
