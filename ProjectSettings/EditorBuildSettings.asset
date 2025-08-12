@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/ball coin collector scene.unity
     guid: 7d27030b6dd46466fa1921adee480ba1
   - enabled: 1
+    path: Assets/ball level 4.unity
+    guid: 28650d80b22f14ef3b3ba3dc7238b9bd
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

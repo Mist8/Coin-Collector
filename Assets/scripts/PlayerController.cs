@@ -79,8 +79,8 @@ public class PlayerController : MonoBehaviour
         {
             SoundFXManager.instance.PlaySoundFXClip(spikeSound, transform, 1f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene if player hits a spike
-    
-            
+
+
         }
 
         if (coinsCollected >= 8 && SceneManager.GetActiveScene().buildIndex == 1) //win level 2
@@ -90,12 +90,16 @@ public class PlayerController : MonoBehaviour
         }
         if (coinsCollected >= 18 && SceneManager.GetActiveScene().buildIndex == 2) //win level 3
         {
-            StartCoroutine(LoadLevel(2));
+            StartCoroutine(LoadLevel(3));
         }
         if (coinsCollected >= 4 && SceneManager.GetActiveScene().buildIndex == 0) //win level 1
-            {
-                StartCoroutine(LoadLevel(1));
-            }
+        {
+            StartCoroutine(LoadLevel(1));
+        }
+        if (coinsCollected >= 12 && SceneManager.GetActiveScene().buildIndex == 3) //win level 4
+        {
+            StartCoroutine(LoadLevel(3));
+        }
 
     }
     IEnumerator LoadLevel(int sceneIndex)
