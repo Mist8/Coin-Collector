@@ -2,15 +2,37 @@ using UnityEngine;
 
 public class MovingObstacle : MonoBehaviour
 {
+    public Vector3 startPosition;
+    public Vector3 pointA; //First point to move to
+    public Vector3 pointB; //Second point to move to
+    public float speed = 1.0f; //movement speed
+
+    private Vector3 lastPosition; //previous frame position
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        startPosition = transform.position;
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector3.Lerp(pointA, pointB, Mathf.PingPong(Time.time * speed, 1.0f));
+
+        // Calculate movement direction
+        Vector3 moveDir = transform.position - lastPosition;
+        moveDir.y = 0; // optional: keep object upright
+        //moveDir.Normalize(); //if only care abt direction, not distance when rotating
+
+        //face direction of movement
+        if (moveDir != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(moveDir);
+        }
+
+        lastPosition = transform.position; // update last position for next frame
         
     }
 }
