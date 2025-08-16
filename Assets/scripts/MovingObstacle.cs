@@ -8,18 +8,32 @@ public class MovingObstacle : MonoBehaviour
     public float speed = 1.0f; //movement speed
 
     private Vector3 lastPosition; //previous frame position
+    private int randomIndex;
+    private float phaseOffset;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPosition = transform.position;
         lastPosition = transform.position;
+        phaseOffset = Random.Range(0f, 1f);
+
+        //If startPosition is not pointA or pointB, pick random first target
+        if (startPosition != pointA && startPosition != pointB)
+        {
+            int randomIndex = Random.Range(0, 2);
+            transform.position = startPosition;
+            if (randomIndex == 0)
+                transform.position = pointA;
+            else
+                transform.position = pointB;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(pointA, pointB, Mathf.PingPong(Time.time * speed, 1.0f));
+        float t = Mathf.PingPong(Time.time * speed + phaseOffset, 1f);
+        transform.position = Vector3.Lerp(pointA, pointB, t);
 
         // Calculate movement direction
         Vector3 moveDir = transform.position - lastPosition;
