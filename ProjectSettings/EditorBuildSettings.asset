@@ -11,13 +11,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ball level 2.unity
     guid: 883d9dfe75ccb41708f708eee0776ebc
-  - enabled: 1
+  - enabled: 0
+    path: Assets/ball level 3.unity
+    guid: 1ff2d40727d744c54bb5c11863827350
+  - enabled: 0
     path: Assets/ball coin collector scene.unity
     guid: 7d27030b6dd46466fa1921adee480ba1
+  - enabled: 1
+    path: Assets/ball coin collector scene lvl 3.unity
+    guid: 80daaf3258b5a49fa96d77d514e8c461
   - enabled: 1
     path: Assets/ball level 4.unity
     guid: 28650d80b22f14ef3b3ba3dc7238b9bd
   - enabled: 1
+    path: Assets/ball level 5.unity
+    guid: 477739740288f43e68dffc3c16018a1c
+  - enabled: 0
+    path: Assets/ball level 6.unity
+    guid: 4d3a7215aeb3c4061b1f8cb7ea28e9fc
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
