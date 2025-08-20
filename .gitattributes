@@ -22,7 +22,7 @@
 *.giparams unity-yaml-file
 *.guiskin unity-yaml-file
 *.mask unity-yaml-file
-*.mat unity-yaml-file
+*.mat filter=lfs diff=lfs merge=lfs -text
 *.meta unity-yaml-file
 *.mixer unity-yaml-file
 *.overrideController unity-yaml-file
@@ -35,7 +35,7 @@
 *.shadervariants unity-yaml-file
 *.spriteatlas unity-yaml-file
 *.terrainlayer unity-yaml-file
-*.unity unity-yaml-file
+*.unity filter=lfs diff=lfs merge=lfs -text
 # Unity binary files
 *.bundle lfs-file
 *.cubemap lfs-file
@@ -49,7 +49,7 @@
 *.rns lfs-file
 *.reason lfs-file
 *.lxo lfs-file
-*.exr lfs-file
+*.exr filter=lfs diff=lfs merge=lfs -text
 # Documents
 *.pdf lfs-file
 # Image formats
@@ -62,10 +62,10 @@
 *.gif lfs-file
 *.iff lfs-file
 *.pict lfs-file
-*.png lfs-file
-*.psd lfs-file
+*.png filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
 *.svg lfs-file
-*.tga lfs-file
+*.tga filter=lfs diff=lfs merge=lfs -text
 *.tiff lfs-file
 *.webp lfs-file
 # Audio formats
@@ -119,9 +119,3 @@
 *.rar lfs-file
 *.tar lfs-file
 *.hdr filter=lfs diff=lfs merge=lfs -text
-*.psd filter=lfs diff=lfs merge=lfs -text
-*.tga filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
-*.exr filter=lfs diff=lfs merge=lfs -text
-*.mat filter=lfs diff=lfs merge=lfs -text
-*.unity filter=lfs diff=lfs merge=lfs -text
