@@ -7,6 +7,7 @@ TagManager:
   - Coin
   - Spike
   - Sound
+  - Skeleton
   layers:
   - Default
   - TransparentFX
