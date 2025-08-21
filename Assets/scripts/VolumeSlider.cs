@@ -13,7 +13,7 @@ public class VolumeManager : MonoBehaviour
     private const string MasterKey = "MasterVolume";
     private const string MusicKey = "MusicVolume";
     private const string SFXKey = "SFXVolume";
-    private const string FirstTimeKey = "FirstTimeLoad";
+    //private const string FirstTimeKey = "FirstTimeLoad";
 
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
@@ -21,10 +21,6 @@ public class VolumeManager : MonoBehaviour
 
     void Start()
     {
-        bool isFirstTime = PlayerPrefs.GetInt(FirstTimeKey, 1) == 1;
-
-        if (SceneManager.GetActiveScene().buildIndex != 0 || !isFirstTime) //not level 1 OR first lvl 1 load
-        {
             //LOAD SAVED VALUES or default to 1
             masterSlider.value = PlayerPrefs.GetFloat(MasterKey, 1f);
             musicSlider.value = PlayerPrefs.GetFloat(MusicKey, 1f);
@@ -33,20 +29,7 @@ public class VolumeManager : MonoBehaviour
             //apply volumes on start
             UpdateVolumes();
 
-        }
-        else //first time loading game
-        {
-            //First time in Level 1: reset all sliders to 100%
-            masterSlider.value = 1f;
-            musicSlider.value = 1f;
-            sfxSlider.value = 1f;
-
-            UpdateVolumes();
-
-            // mark that we already loaded Level 1 once
-            PlayerPrefs.SetInt(FirstTimeKey, 0);
-            PlayerPrefs.Save();
-        }
+        
 
         //listen for slider changes
             masterSlider.onValueChanged.AddListener(delegate { OnMasterVolumeChanged(); });

@@ -7,7 +7,7 @@ public class SoundCanvas : MonoBehaviour
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
-    private bool initialized = false;
+    //private bool initialized = false;
     public SoundMixerManager mixerManager;
     public GameObject panelOrCanvas; //panel OR canvas GameObject that will be opened/closed
 
@@ -19,18 +19,18 @@ public class SoundCanvas : MonoBehaviour
         }
         /*masterSlider.SetValueWithoutNotify(1f);
         musicSlider.SetValueWithoutNotify(1f);
-        sfxSlider.SetValueWithoutNotify(1f);*/
-        initialized = false;
+        sfxSlider.SetValueWithoutNotify(1f);
+        initialized = false;*/
 
-        masterSlider.value = 1f;
+        /*masterSlider.value = 1f;
         musicSlider.value = 1f;
         sfxSlider.value = 1f;
 
         mixerManager.SetMasterVolume(1f);
         mixerManager.SetMusicVolume(1f);
-        mixerManager.SetSoundFXVolume(1f);
+        mixerManager.SetSoundFXVolume(1f); */
     }
-    private void OnEnable()
+    /*private void OnEnable()
     {
 
         if (!initialized)
@@ -49,5 +49,5 @@ public class SoundCanvas : MonoBehaviour
 
             initialized = true;
         }
-    } 
+    } */
 }
