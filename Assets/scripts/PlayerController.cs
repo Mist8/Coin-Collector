@@ -96,13 +96,13 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(LoadLevel(1));
         }
-        if (coinsCollected >= 12 && SceneManager.GetActiveScene().buildIndex == 3) //win level 4
+        if (coinsCollected >= 13 && SceneManager.GetActiveScene().buildIndex == 3) //win level 4
         {
             StartCoroutine(LoadLevel(4));
         }
         if (coinsCollected >= 13 && SceneManager.GetActiveScene().buildIndex == 4) //win level 5
         {
-            StartCoroutine(LoadLevel(4));
+            StartCoroutine(LoadLevel(5));
         }
 
     }
