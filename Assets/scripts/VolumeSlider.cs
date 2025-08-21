@@ -8,7 +8,7 @@ public class VolumeManager : MonoBehaviour
     public Slider masterSlider;
     public Slider musicSlider;
     public Slider sfxSlider;
-    public bool firstLevel1Load;
+    //public bool firstLevel1Load;
 
     private const string MasterKey = "MasterVolume";
     private const string MusicKey = "MusicVolume";
@@ -25,11 +25,9 @@ public class VolumeManager : MonoBehaviour
             masterSlider.value = PlayerPrefs.GetFloat(MasterKey, 1f);
             musicSlider.value = PlayerPrefs.GetFloat(MusicKey, 1f);
             sfxSlider.value = PlayerPrefs.GetFloat(SFXKey, 1f);
-
+            
             //apply volumes on start
-            UpdateVolumes();
-
-        
+        UpdateVolumes();
 
         //listen for slider changes
             masterSlider.onValueChanged.AddListener(delegate { OnMasterVolumeChanged(); });
