@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(LoadLevel(2));
         }
-        if (coinsCollected >= 13 && SceneManager.GetActiveScene().buildIndex == 4) //win level 4
+        if (coinsCollected >= 17 && SceneManager.GetActiveScene().buildIndex == 4) //win level 4
         {
             StartCoroutine(LoadLevel(5));
         }
