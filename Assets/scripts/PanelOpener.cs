@@ -1,37 +1,45 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PanelOpener : MonoBehaviour
 {
     public GameObject panelOrCanvas; //panel OR canvas GameObject that will be opened/closed
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         if (panelOrCanvas != null) //hide panel/canvas on game start
         {
             panelOrCanvas.SetActive(false);
-            //DontDestroyOnLoad(panelOrCanvas);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
-    
-    /*void Awake() 
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }*/
-
-    //targetCanvasOrPanel.activeSelf: active status
 
     public void ToggleVisibility()
     {
         if (panelOrCanvas != null)
         {
+            //Debug.Log("Toggled!");
             panelOrCanvas.SetActive(!panelOrCanvas.activeSelf); //toggle visibility of the panel
         }
+
+        /*if (panelOrCanvas != null)
+        {
+            bool newState = !panelOrCanvas.activeSelf;
+            panelOrCanvas.SetActive(newState);
+
+            if (newState) // force UI refresh when showing
+            {
+                Canvas.ForceUpdateCanvases();
+                LayoutRebuilder.ForceRebuildLayoutImmediate(
+                    panelOrCanvas.GetComponent<RectTransform>()
+                );
+            }
+
+            Debug.Log("Toggled! Active: " + newState);
+        }*/
+
     }
 }
