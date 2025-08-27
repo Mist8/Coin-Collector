@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
 
     public GameObject winText;
-    public GameObject completeText;
+    //public GameObject completeText;
     private Camera mainCamera;
 
     int coinsCollected;
@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
         finishedLevel = false;
         coinsCollected = 0;
         audioSource = GetComponent<AudioSource>();
-        if (SceneManager.GetActiveScene().buildIndex == 5) //end scene
+        /*if (SceneManager.GetActiveScene().buildIndex == 5) //end scene
         {
             completeText.SetActive(true);
-        }
+        }*/
 
     }
 
