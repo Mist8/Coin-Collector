@@ -89,24 +89,24 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (coinsCollected >= 8 && SceneManager.GetActiveScene().buildIndex == 2) //win level 2
+        if (coinsCollected >= 1 && SceneManager.GetActiveScene().buildIndex == 2) //win level 2 -- 8
         {
             StartCoroutine(LoadLevel(3));
 
         }
-        if (coinsCollected >= 18 && SceneManager.GetActiveScene().buildIndex == 3) //win level 3
+        if (coinsCollected >= 1 && SceneManager.GetActiveScene().buildIndex == 3) //win level 3  -- 18
         {
             StartCoroutine(LoadLevel(4));
         }
-        if (coinsCollected >= 4 && SceneManager.GetActiveScene().buildIndex == 1) //win level 1
+        if (coinsCollected >= 1 && SceneManager.GetActiveScene().buildIndex == 1) //win level 1 -- 4
         {
             StartCoroutine(LoadLevel(2));
         }
-        if (coinsCollected >= 17 && SceneManager.GetActiveScene().buildIndex == 4) //win level 4
+        if (coinsCollected >= 1 && SceneManager.GetActiveScene().buildIndex == 4) //win level 4 -- 21
         {
             StartCoroutine(LoadLevel(5));
         }
-        if (coinsCollected >= 13 && SceneManager.GetActiveScene().buildIndex == 5) //win level 5
+        if (coinsCollected >= 1 && SceneManager.GetActiveScene().buildIndex == 5) //win level 5 -- 13
         {
             StartCoroutine(LoadLevel(6));
         }
@@ -115,10 +115,18 @@ public class PlayerController : MonoBehaviour
     IEnumerator LoadLevel(int sceneIndex)
     {
         finishedLevel = true;
+        LevelTimer.instance.StopTimer();
+        LevelTimer.instance.SaveLevelTime(SceneManager.GetActiveScene().buildIndex+1, LevelTimer.instance.elapsedTime);
         SoundFXManager.instance.PlaySoundFXClip(winSound, transform, 1f);
         winText.SetActive(true);
         yield return new WaitForSeconds(4f); // wait for text to show
         SceneManager.LoadScene(sceneIndex);
+        yield return null; // wait 1 frame so new scene loads
+        if (sceneIndex == 6) // results scene
+        {
+            LevelTimer.instance.ShowResults();
+        }
         finishedLevel = false;
+        LevelTimer.instance.ResetTimer();
     }
 }
