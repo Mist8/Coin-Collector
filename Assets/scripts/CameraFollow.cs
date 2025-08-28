@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target; //the target to follow
     Vector3 offset; //the offset from the target
+    //private PanelOpener panelOpener;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,9 +22,12 @@ public class CameraFollow : MonoBehaviour
 
         float rotateHorizontal = Input.GetAxis("Mouse X"); //get horizontal mouse movement
 
-        transform.RotateAround(target.position, Vector3.up, rotateHorizontal * 4.5f); //rotate camera around the y-axis based on horizontal mouse movement
+        if (!PanelOpener.paused)
+        {
+            transform.RotateAround(target.position, Vector3.up, rotateHorizontal * 4.5f); //rotate camera around the y-axis based on horizontal mouse movement
 
-        // Update the offset after rotation
-        offset = transform.position - target.position;
+            // Update the offset after rotation
+            offset = transform.position - target.position;
+        }
     }
 }
