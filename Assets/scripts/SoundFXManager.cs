@@ -11,7 +11,6 @@ public class SoundFXManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject); // Keep this object across scenes
         }
         else
         {
@@ -21,7 +20,9 @@ public class SoundFXManager : MonoBehaviour
 
     public void PlaySoundFXClip(AudioClip audioclip, Transform spawnTransform, float volume)
     {
-        AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        //AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
+        Vector3 spawnPos = spawnTransform != null ? spawnTransform.position : Vector3.zero;
+        AudioSource audioSource = Instantiate(soundFXObject, spawnPos, Quaternion.identity);
         DontDestroyOnLoad(audioSource.gameObject); //keep object across scene loads
 
         audioSource.clip = audioclip; // Set the audio clip

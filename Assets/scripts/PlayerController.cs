@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip spikeSound;
     public AudioClip winSound;
     private AudioSource audioSource;
+    public AudioClip fireworksSound;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -77,13 +79,13 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Coin")
         {
             coinsCollected++;
-            SoundFXManager.instance.PlaySoundFXClip(coinSound, transform, 1f); //play coin sound effect
+            SoundFXManager.instance.PlaySoundFXClip(coinSound, null, 1f); //play coin sound effect
             other.gameObject.SetActive(false); //deactivate the coin object
         }
 
         if (other.tag == "Spike")
         {
-            SoundFXManager.instance.PlaySoundFXClip(spikeSound, transform, 1f);
+            SoundFXManager.instance.PlaySoundFXClip(spikeSound, null, 1f);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); //reload the current scene if player hits a spike
 
 
@@ -119,12 +121,24 @@ public class PlayerController : MonoBehaviour
         LevelTimer.instance.SaveLevelTime(SceneManager.GetActiveScene().buildIndex+1, LevelTimer.instance.elapsedTime);
         SoundFXManager.instance.PlaySoundFXClip(winSound, transform, 1f);
         winText.SetActive(true);
+
+        Debug.Log("above scene 6 detection");
+        //fade out while text is showing
+        if (sceneIndex == 6 && MusicManager.instance != null)
+        {
+            Debug.Log("Fading music before scene change");
+            MusicManager.instance.FadeMusic();
+        }
+
         yield return new WaitForSeconds(4f); // wait for text to show
         SceneManager.LoadScene(sceneIndex);
-        yield return null; // wait 1 frame so new scene loads
+        //yield return null; // wait 1 frame so new scene loads
+
         if (sceneIndex == 6) // results scene
         {
-            LevelTimer.instance.ShowResults();
+            //Debug.Log("above show results sound");
+            //LevelTimer.instance.ShowResults();
+
         }
         finishedLevel = false;
         LevelTimer.instance.ResetTimer();
