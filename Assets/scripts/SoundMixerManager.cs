@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio; //manages the sound mixer settings in Unity, allowing for audio adjustments and management
+using UnityEngine.SceneManagement;
+
 
 public class SoundMixerManager : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class SoundMixerManager : MonoBehaviour
     private const string MusicKey = "MusicVolume";
     private const string SFXKey = "SFXVolume";
 
-        public AudioSource musicAudioSource;
+    public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
 
 
@@ -59,6 +61,11 @@ public class SoundMixerManager : MonoBehaviour
 
     }
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("masterVolume", Mathf.Log10(volume) * 20f); // Set the master volume to the specified value
@@ -73,8 +80,8 @@ public class SoundMixerManager : MonoBehaviour
     {
         audioMixer.SetFloat("soundFXVolume", Mathf.Log10(volume) * 20f);
     }
-    
-        void OnMasterVolumeChanged()
+
+    void OnMasterVolumeChanged()
     {
         PlayerPrefs.SetFloat(MasterKey, masterSlider.value);
         PlayerPrefs.Save();
@@ -108,5 +115,44 @@ public class SoundMixerManager : MonoBehaviour
 
         //set AudioListener.volume for overall sound
         AudioListener.volume = master;
+    }
+    
+        void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Try to find sliders in the new scene
+        var newMasterSlider = GameObject.Find("MasterSlider")?.GetComponent<Slider>();
+        var newMusicSlider = GameObject.Find("MusicSlider")?.GetComponent<Slider>();
+        var newSfxSlider = GameObject.Find("SFXSlider")?.GetComponent<Slider>();
+
+        if (newMasterSlider != null) {
+            masterSlider = newMasterSlider;
+            masterSlider.value = PlayerPrefs.GetFloat(MasterKey, 1f);
+            masterSlider.onValueChanged.AddListener(delegate { OnMasterVolumeChanged(); });
+        }
+
+        if (newMusicSlider != null) {
+            musicSlider = newMusicSlider;
+            musicSlider.value = PlayerPrefs.GetFloat(MusicKey, 1f);
+            musicSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChanged(); });
+        }
+
+        if (newSfxSlider != null) {
+            sfxSlider = newSfxSlider;
+            sfxSlider.value = PlayerPrefs.GetFloat(SFXKey, 1f);
+            sfxSlider.onValueChanged.AddListener(delegate { OnSFXVolumeChanged(); });
+        }
+
+        // Re-apply volumes
+        UpdateVolumes();
     }
 }
